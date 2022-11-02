@@ -1,0 +1,23 @@
+{
+  "name": "criptocurrencyapp",
+  "version": "v1",
+  "description": "Prueba técnica fullstack ",
+  "main": "index.js",
+  "repository": "https://github.com/pipeprieto/Criptocurrencyapp.git",
+  "author": "Andrés Prieto <pipeprieto0902@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.25.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "dev-server": "nodemon api/v1/index.js"
+  }
+}
