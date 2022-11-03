@@ -1,3 +1,7 @@
+const init = (req,res)=>{
+  res.send(`<h1>Hola mundo</h1>`)
+}
+
 
 const getUser = (req,res)=>{
 
@@ -30,4 +34,5 @@ module.exports = {
   addGestora,
   login,
   addCrypto,
+  init
 };
