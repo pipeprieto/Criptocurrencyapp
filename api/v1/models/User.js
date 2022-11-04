@@ -1,9 +1,9 @@
 const {DataTypes} = require('sequelize');
 const sequelize = require("../../../database/database");
-const Crypto = require('./Crypto');
+const Pais = require('./Pais');
 
 
-const User = sequelize.define('User',{
+const User = sequelize.define('users',{
     id:{
         type:DataTypes.INTEGER,
         primaryKey:true,
@@ -19,23 +19,21 @@ const User = sequelize.define('User',{
     },
     username:{
         type:DataTypes.STRING,
-        allowNull:false
+        allowNull:false,
+        unique:true
     },
     pass:{
         type:DataTypes.STRING,
         allowNull:false
-    }
+    },
 },{timestamps:false})
 
-// User.hasMany(Crypto,{
-//     foreignKey:'cryptoID',
-//     sourceKey:'id'
-// })
+User.hasOne(Pais,{
+    foreignKey:'pais_id',
+    sourceKey:"id"
+})
 
-// Crypto.belongsTo(User,{
-//     foreignKey:'cryptoID',
-//     targetKey:'id'
-// })
+
 
 
 module.exports = User;

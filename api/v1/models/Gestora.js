@@ -3,10 +3,10 @@ const sequelize = require("../../../database/database");
 const Crypto = require('./Crypto');
 
 const Gestora = sequelize.define(
-  "Gestora",
+  "gestora",
   {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,

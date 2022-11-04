@@ -5,7 +5,7 @@ const Gestora = require("./Gestora");
 const Crypto = require("./Crypto");
 
 const Pais = sequelize.define(
-  "Pais",
+  "pais",
   {
     id: {
       type: DataTypes.INTEGER,
