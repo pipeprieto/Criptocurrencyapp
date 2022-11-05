@@ -110,7 +110,7 @@ const addCrypto = async(req,res)=>{
       cod,
       crypto_id
     })
-    res.redirect("http://localhost:3001/api/v1/userInfo");
+    res.json({message:"Cryptomoneda agregada correctamente"})
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
