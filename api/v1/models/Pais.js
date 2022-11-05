@@ -17,6 +17,10 @@ const Pais = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    codigo:{
+      type:DataTypes.INTEGER,
+      allowNull:false
+    }
   },
   { timestamps: false }
 );

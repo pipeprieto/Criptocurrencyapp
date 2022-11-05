@@ -1,6 +1,13 @@
 const User = require('../models/User');
+const UsersCryptos = require('../models/UsersCryptos');
 const {tokenSign} = require('../helpers/generateToken');
-const {userInfoQuery} = require('../../../database/querys');
+const {
+  userInfoQuery,
+  allowedCryptosByCountry,
+  countryByCodeInfo,
+  countriesInfo,
+  allowedUserCryptos,
+} = require("../../../database/querys");
 const sequelize = require('../../../database/database');
 const { QueryTypes } = require("sequelize");
 
@@ -29,18 +36,93 @@ const login = async (req,res)=>{
   }
 }
 const getInfo = async(req,res)=>{
-  const {id} = req.body;
+  const {username} = req.body;
   try {
-      const userInfo = await sequelize.query(userInfoQuery + id,{type:QueryTypes.SELECT}) ;
-      res.json(userInfo);
+      const userInfo = await sequelize.query(userInfoQuery + `'${username}'`, {
+        type: QueryTypes.SELECT,
+      }); ;
+      if (userInfo !== null) {
+        res.json(userInfo);
+      }else{
+        res.status(404).json({ message: "Usuario no encontrado" });
+      }
+      
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ message: error.message });
   }
 
 }
 
+const getCountryByCodInfo = async(req,res)=>{
+  const {paisCod} = req.body;
+  try {
+    const countryInfo = await sequelize.query(countryByCodeInfo + paisCod, {
+      type: QueryTypes.SELECT,
+    });
+    if (countryInfo !== null) {
+      res.json(countryInfo);
+    } else {
+      res.status(404).json({ message: "Usuario no encontrado" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+const getCountriesInfo = async(req,res)=>{
+  try {
+    const countries = await sequelize.query(countriesInfo,{type:QueryTypes.SELECT});
+    res.json(countries);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+const getAllowedCryptos = async(req,res)=>{
+  const {pais_id} = req.body
+  try {
+    const cryptos = await sequelize.query(allowedCryptosByCountry + pais_id, {
+      type: QueryTypes.SELECT,
+    });
+    res.json(cryptos)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+const getAllowedUserCryptos = async(req,res)=>{
+  const {pais_id,username} = req.body;
+  const query = allowedUserCryptos(pais_id,username);
+  try {
+  const allowed = await sequelize.query(query,{type:QueryTypes.SELECT});
+  res.json(allowed);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+const addCrypto = async(req,res)=>{
+  const{id,username,cod,crypto_id} = req.body;
+  try {
+    const created = await UsersCryptos.create({
+      id,
+      username,
+      cod,
+      crypto_id
+    })
+    res.redirect("http://localhost:3001/api/v1/userInfo");
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
 module.exports = {
   init,
- login,
- getInfo
+  login,
+  getInfo,
+  getCountryByCodInfo,
+  getCountriesInfo,
+  getAllowedCryptos,
+  addCrypto,
+  getAllowedUserCryptos,
 };

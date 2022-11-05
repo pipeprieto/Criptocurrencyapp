@@ -28,11 +28,10 @@ const User = sequelize.define('users',{
     },
 },{timestamps:false})
 
-User.hasOne(Pais,{
-    foreignKey:'pais_id',
-    sourceKey:"id"
-})
-
+// User.hasOne(Pais,{
+//     foreignKey:'pais_id',
+//     sourceKey:"codigo"
+// })
 
 
 
