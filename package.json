@@ -21,6 +21,7 @@
     "nodemon": "^2.0.20"
   },
   "scripts": {
-    "dev-server": "nodemon api/v1/index.js"
+    "dev-server": "nodemon api/v1/index.js",
+    "build":"node api/v1/index.js"
   }
 }
