@@ -11,7 +11,7 @@ export class DatapageComponent implements OnInit {
   constructor(private service:AppserviceService) { }
 
   ngOnInit(): void {
-    this.service.getUserInfo("luquef").subscribe((res:any)=>{
+    this.service.getUserInfo("jhadechine").subscribe((res:any)=>{
       this.dataInfo = res;
       this.objectInfo.username = res[0].username;
       this.objectInfo.apellido = res[0].apellido;

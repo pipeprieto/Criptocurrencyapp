@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "cryptocurrency-app": {
+      "i18n":{
+        "sourceLocale":"es-CO",
+        "locales": {}
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
