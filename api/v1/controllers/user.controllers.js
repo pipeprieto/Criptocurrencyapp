@@ -36,7 +36,7 @@ const login = async (req,res)=>{
   }
 }
 const getInfo = async(req,res)=>{
-  const {username} = req.body;
+  const {username} = req.headers;
   try {
       const userInfo = await sequelize.query(userInfoQuery + `'${username}'`, {
         type: QueryTypes.SELECT,
@@ -91,7 +91,7 @@ const getAllowedCryptos = async(req,res)=>{
 }
 
 const getAllowedUserCryptos = async(req,res)=>{
-  const {pais_id,username} = req.body;
+  const {pais_id,username} = req.headers;
   const query = allowedUserCryptos(pais_id,username);
   try {
   const allowed = await sequelize.query(query,{type:QueryTypes.SELECT});

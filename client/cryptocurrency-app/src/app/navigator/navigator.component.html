@@ -1,11 +1,12 @@
 <nav class="navbar w-75 mx-auto">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" routerLink="/profile">
             <i class="bi bi-person-circle"></i>
-            Andrés Felipe Prieto Luque,CO
+            {{userInfo.username}} {{userInfo.apellido}}, 
+            {{userInfo.paisname}}
         </a>
         <div class="">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" (click)="destroyToken()" routerLink="/">
                 <i class="bi bi-box-arrow-left"></i>
                 Sign-Out
             </a>

@@ -5,6 +5,8 @@ const checkAuth = async(req,res,next)=>{
         const token = req.headers.authorization.split(' ').pop();
         const tokenData = await verifyToken(token)
         data = tokenData;
+        console.log(tokenData)
+        console.log(data)
         if (tokenData._id) {
             next();
         } else {
