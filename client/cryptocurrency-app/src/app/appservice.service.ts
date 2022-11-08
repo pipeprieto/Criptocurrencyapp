@@ -26,10 +26,10 @@ export class AppserviceService {
 
   getAllowedCryptos() {}
 
-  getAllowedUserCryptos():any {
+  getAllowedUserCryptos(pais_id:any,username:string):any {
     let headers = {
-      pais_id:'1',
-      username:'luquef'
+      pais_id,
+      username
     }
     return this.http.get<any>(`${this.url}/api/v1/allowedUserCryptos`,{headers});
 

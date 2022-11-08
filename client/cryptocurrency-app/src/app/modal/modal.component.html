@@ -1,19 +1,21 @@
-<div class="modal fade" id="listadoMonedas" tabindex="-1" aria-labelledby="listadoMonedasLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<button (click)="modal.open(cryptomodal)" class="btn btn-warning w-186px rounded-pill">AGREGAR MONEDA</button>
+<ng-template #cryptomodal>
+  <div class="modal-lg" >
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Listado de Monedas</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5">Listado de Monedas</h1>
+        <button type="button" class="close"  aria-label="close" (click)="modal.dismissAll()" style="outline:none;border:none;">
+          <span aria-hidden="true" >&times;</span>
+        </button>
       </div>
-      <div class="modal-body">
-        <select>
-            <option *ngFor = "" value="">Hola</option>
+      <div class="modal-body mx-auto">
+        <select *ngIf="dataInfo.length !== 0" class="w-100">
+          <option value="">Hola</option>
         </select>
+        <p *ngIf="dataInfo.length === 0">Usted no tiene monedas disponibles para agregar a su lista</p>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Guardar</button>
-        <button type="button" class="btn ">Cancelar</button>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-warning" (click)="modal.dismissAll()">Guardar</button>
+        <button type="button" class="btn border-dark" (click)="modal.dismissAll()">Cancelar</button>
       </div>
-    </div>
   </div>
-</div>
+</ng-template>

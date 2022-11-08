@@ -26,7 +26,7 @@ const allowedUserCryptos = (pais_id,username)=>{
               on pais.crypto_id = cryptos.id
             join userscryptos
               on userscryptos.crypto_id = cryptos.id
-           where pais.codigo = ${pais_id}
+           where pais.codigo = '${pais_id}'
              and userscryptos.crypto_id not in(select userscryptos.crypto_id
 						                                     from userscryptos
 						                                     join cryptos

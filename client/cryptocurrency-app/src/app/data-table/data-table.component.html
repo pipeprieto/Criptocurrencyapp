@@ -1,8 +1,7 @@
 <div class="w-75 mx-auto">
     <div class="w-100 d-flex mt-5 mb-4 flex-row-reverse justify-content-start mx-auto">
-        <button (click)="displayModal()" class="btn btn-warning w-186px" data-bs-toggle="modal" data-bs-target="#listadoMonedas">AGREGAR MONEDA</button>
+        <app-modal [dataInfo]="dataInfo"></app-modal>
     </div>
-    <input [attr.value]="dataInfo[0].codigopais" class="hidden" />
     <table class="table">
         <thead class="bg-light">
             <tr>
@@ -28,4 +27,4 @@
     </table>
 </div>
 
-<app-modal></app-modal>
+
